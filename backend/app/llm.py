@@ -9,16 +9,16 @@ MODEL = "llama3.1"
 """
 def analyze_text(text: str) -> dict:
     prompt = f"""
-You are an AI workflow assistant.
+    You are an AI workflow assistant.
 
-Return ONLY valid JSON with:
-- classification: short label
-- summary: 1-2 sentences
-- actions: list of suggested next steps
+    Return ONLY valid JSON with:
+    - classification: short label
+    - summary: 1-2 sentences
+    - actions: list of suggested next steps
 
-Text:
-{text}
-"""
+    Text:
+    {text}
+    """
 
     response = requests.post(
         OLLAMA_URL,
@@ -31,7 +31,7 @@ Text:
     )
 
     response.raise_for_status()
-    raw = response.json()["response"]
+    raw = response.json()["response"] #convert to dict
 
     return raw
 
